@@ -1,7 +1,5 @@
 # 100DaysOfSwift
 
-# 100 Days of Swift
-
 ![Swift Logo](https://swift.org/assets/images/swift.svg)
 
 🚀 This repository is my journey through the "100 Days of Swift" program, originally created by Paul Hudson from Hacking with Swift. The program is designed to help learners become proficient in Swift programming language over the course of 100 days by completing various projects and challenges.
