@@ -138,3 +138,73 @@ func strokeCat(_ name: String) throws {
     }
 }
 try strokeCat("Mt Bitey")
+
+/*
+ do starts a section of code that might cause problems,
+ try is used before every function that might throw an error, and
+ catch lets you handle errors gracefully.
+ 
+ If any errors are thrown inside the do block, execution immediately jumps to the catch block.
+ */
+do {
+    try checkPassword("password")
+    print("That password is good!")
+} catch {
+    print("You can't use that password.")
+}
+
+/*
+ Why does Swift make us use try before every throwing function?
+ Swift by forcing us to use try before every throwing function, we’re explicitly
+ acknowledging which parts of our code can cause errors
+ 
+ do {
+     try throwingFunction1()
+     nonThrowingFunction1()
+     try throwingFunction2()
+     nonThrowingFunction2()
+     try throwingFunction3()
+ } catch {
+     // handle errors
+ }
+ using try makes it clear that the first, third, and fifth function calls can throw errors,
+ but the second and fourth cannot.
+ */
+
+//inout parameters
+/*
+ All parameters passed into a Swift function are constants, so you can’t change them. If you want,
+ you can pass in one or more parameters as inout, which means they can be changed inside your function,
+ and those changes reflect in the original value outside the function.
+ */
+func doubleInPlace(number: inout Int) {
+    number *= 2
+}
+/*
+ To use that, you first need to make a variable integer – you can’t use constant integers with inout,
+ because they might be changed. You also need to pass the parameter to doubleInPlace using an ampersand,
+ &, before its name, which is an explicit recognition that you’re aware it is being used as inout.
+ */
+var myNum = 10
+doubleInPlace(number: &myNum)
+
+/*
+ SUMMARY
+ 
+ 1.Functions let us re-use code without repeating ourselves.
+ 
+ 2.Functions can accept parameters – just tell Swift the type of each parameter.
+ 
+ 3.Functions can return values, and again you just specify what type will be sent back. Use tuples if you
+ want to return several things.
+ 
+ 4.You can use different names for parameters externally and internally, or omit the external name entirely.
+ 
+ 5.Parameters can have default values, which helps you write less code when specific values are common.
+ 
+ 6.Variadic functions accept zero or more of a specific parameter, and Swift converts the input to an array.
+ 
+ 7.Functions can throw errors, but you must call them using try and handle errors using catch.
+ 
+ 8.You can use inout to change variables inside a function, but it’s usually better to return a new value.
+ */
